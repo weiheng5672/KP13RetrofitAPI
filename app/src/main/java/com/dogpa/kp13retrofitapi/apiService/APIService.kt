@@ -9,18 +9,29 @@ interface ApiService {
     //取得水庫的列表
     @GET("WraApi/v1/Reservoir/RealTimeInfo")
     suspend fun getReservoirInfoList() : List<ReservoirInfo>
-
-    //建立實例
-    companion object {
-        var apiService: ApiService? = null
-        fun getInstance() : ApiService {
-            if (apiService == null) {
-                apiService = Retrofit.Builder()
-                    .baseUrl("https://fhy.wra.gov.tw/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build().create(ApiService::class.java)
-            }
-            return apiService!!
-        }
-    }
 }
+
+private const val BASE_URL =
+    "https://fhy.wra.gov.tw/"
+
+private val retrofit = Retrofit.Builder()
+    .addConverterFactory(
+        GsonConverterFactory.create()
+    )
+    .baseUrl(BASE_URL)
+    .build()
+
+object ReservoirApi {
+
+    val retrofitService : ApiService by lazy {
+
+        retrofit.create(ApiService::class.java)
+
+    }
+
+}
+
+
+
+
+

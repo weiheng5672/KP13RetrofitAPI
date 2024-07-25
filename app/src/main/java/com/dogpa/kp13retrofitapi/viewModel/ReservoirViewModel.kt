@@ -5,28 +5,47 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dogpa.kp13retrofitapi.apiService.ApiService
+import com.dogpa.kp13retrofitapi.apiService.ReservoirApi
 import com.dogpa.kp13retrofitapi.model.ReservoirInfo
 import kotlinx.coroutines.launch
+import java.io.IOException
+
+
+sealed interface UiState {
+
+    data class Success(
+        val data: List<ReservoirInfo>
+    ) : UiState
+
+    object Error : UiState
+    object Loading : UiState
+}
+
 
 class ReservoirViewModel  : ViewModel() {
 
     // 儲存一個水庫的列表
-    var reservoirInfoListResponse:List<ReservoirInfo> by mutableStateOf(listOf())
+    var reservoirUiState: UiState by mutableStateOf(UiState.Loading)
 
-    //儲存API呼叫錯誤資料
-    var errorMessage: String by mutableStateOf("")
-    fun getReservoirInfoList() {
+    init {
+        getData()
+    }
+
+    private fun getData() {
+
         viewModelScope.launch {
-            //透過try catch進行API呼叫
-            val apiService = ApiService.getInstance()
-            try {
-                val movieList = apiService.getReservoirInfoList()
-                reservoirInfoListResponse = movieList
+
+            reservoirUiState = try {
+
+                UiState.Success(
+                    data = ReservoirApi.retrofitService.getReservoirInfoList()
+                )
+
+            } catch (e: IOException) {
+                UiState.Error
             }
-            catch (e: Exception) {
-                errorMessage = e.message.toString()
-            }
+
         }
+
     }
 }

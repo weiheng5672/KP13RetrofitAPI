@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KP13RetrofitAPI</string>
+    <string name="loading_failed">Failed to load</string>
+    <string name="loading">Loading</string>
 </resources>
