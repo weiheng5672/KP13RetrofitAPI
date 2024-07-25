@@ -8,6 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.dogpa.kp13retrofitapi.ui.theme.KP13RetrofitAPITheme
+import com.dogpa.kp13retrofitapi.view.MainView
 
 class MainActivity : ComponentActivity() {
 

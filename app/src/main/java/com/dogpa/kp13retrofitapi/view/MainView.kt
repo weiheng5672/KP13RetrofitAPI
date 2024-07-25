@@ -1,4 +1,4 @@
-package com.dogpa.kp13retrofitapi
+package com.dogpa.kp13retrofitapi.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -15,8 +15,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.dogpa.kp13retrofitapi.R
 import com.dogpa.kp13retrofitapi.model.ReservoirInfo
-import com.dogpa.kp13retrofitapi.view.ReservoirView
 import com.dogpa.kp13retrofitapi.viewModel.ReservoirViewModel
 import com.dogpa.kp13retrofitapi.viewModel.UiState
 
