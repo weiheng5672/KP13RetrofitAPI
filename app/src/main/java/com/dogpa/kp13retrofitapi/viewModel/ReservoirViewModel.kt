@@ -24,7 +24,7 @@ sealed interface UiState {
 
 class ReservoirViewModel  : ViewModel() {
 
-    // 儲存一個水庫的列表
+    // 儲存一個取得水庫列表的狀態
     var reservoirUiState: UiState by mutableStateOf(UiState.Loading)
 
     init {
