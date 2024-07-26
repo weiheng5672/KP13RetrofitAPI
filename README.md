@@ -4,5 +4,5 @@
 使用ViewModel保存Composable的狀態。  
 狀態只有三種，Success、Error、Loading。  
 使用密封類定義這三個狀態。  
-也就是說ViewModel的唯一一個屬性，只有那三種可能的值  
+ViewModel只有唯一一個屬性，代表對應UI的狀態，這個狀態只有那三種可能的值  
 其中只有Success狀態的裡面，具有從網路擷取而來的資料  
