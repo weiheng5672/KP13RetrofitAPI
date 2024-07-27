@@ -1,6 +1,6 @@
 第一版
 ==================================
-透過 ViewModel，使用API服務，從網路擷取經濟部水庫水情的資料
+透過 ViewModel，使用RetrofitAPI，從網路擷取經濟部水庫水情的資料  
 詳見:https://reurl.cc/QEnDZq
 
 第二版
